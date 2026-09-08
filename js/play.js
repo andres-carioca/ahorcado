@@ -23,18 +23,18 @@ var play = {
             'super', 'while', 'const', 'for', 'native', 'switch', 'with', 'continue',
             'function', 'new', 'synchronized', 'default', 'goto', 'null', 'this'];
 
-        game.load.image('horca', '/assets/img/horca.png');
-        game.load.image('asustado', '/assets/img/asustado.png');
-        game.load.image('feliz', '/assets/img/feliz.png');
-        game.load.image('ahorcado', '/assets/img/titulo2.png');
-        game.load.image('ganaste', '/assets/img/ganaste.png');
-        game.load.image('cabeza', '/assets/img/cabeza.png');
-        game.load.image('torso', '/assets/img/torso.png');
-        game.load.image('base', '/assets/img/base.png');
-        game.load.image('brazoIzq', '/assets/img/brazoIzq.png');
-        game.load.image('brazoDer', '/assets/img/brazoDer.png');
-        game.load.image('piernaIzq', '/assets/img/piernaIzq.png');
-        game.load.image('piernaDer', '/assets/img/piernaDer.png');
+        game.load.image('horca', 'assets/img/horca.png');
+        game.load.image('asustado', 'assets/img/asustado.png');
+        game.load.image('feliz', 'assets/img/feliz.png');
+        game.load.image('ahorcado', 'assets/img/titulo2.png');
+        game.load.image('ganaste', 'assets/img/ganaste.png');
+        game.load.image('cabeza', 'assets/img/cabeza.png');
+        game.load.image('torso', 'assets/img/torso.png');
+        game.load.image('base', 'assets/img/base.png');
+        game.load.image('brazoIzq', 'assets/img/brazoIzq.png');
+        game.load.image('brazoDer', 'assets/img/brazoDer.png');
+        game.load.image('piernaIzq', 'assets/img/piernaIzq.png');
+        game.load.image('piernaDer', 'assets/img/piernaDer.png');
         
         game.load.audio('fallo','assets/mp3/fallo.mp3');
         game.load.audio('acierto','assets/mp3/acierto.mp3');
@@ -42,9 +42,10 @@ var play = {
        
 
         for (var i = 0; i < this.alias.length; i++)
-            game.load.image(this.alias[i], '/assets/img/letras/' + this.alias[i] + '.png');
+            game.load.image(this.alias[i], 'assets/img/letras/' + this.alias[i] + '.png');
 
 
+        
 
     },
 
