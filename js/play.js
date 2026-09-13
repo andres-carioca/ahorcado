@@ -146,6 +146,8 @@ var play = {
             for(var i=0;i<this.botonera.length;i++){
                 this.botonera[i].visible=false;
             }
+
+            game.add.image(121, 147, 'cabeza');
             game.add.image(350,400,'ahorcado');
             
         }
@@ -164,6 +166,7 @@ var play = {
                 this.botonera[i].visible=false;
             }
 
+            game.add.image(121, 147, 'feliz');
             game.add.image(350, 400, 'ganaste');
 
         }
