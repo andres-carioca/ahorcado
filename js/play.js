@@ -15,13 +15,13 @@ var play = {
         this.alias = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 
-        this.palabras = ['abstract', 'do', 'if', 'package', 'throw', 'boolean', 'double',
-            'implements', 'private', 'throws', 'break', 'else', 'import', 'protected',
-            'transient', 'byte', 'extends', 'in', 'public', 'true', 'case', 'false',
-            'instanceof', 'return', 'try', 'catch', 'final', 'int', 'short', 'var',
-	    'char', 'finally', 'interface', 'static', 'void', 'class', 'float', 'long',
-            'super', 'while', 'const', 'for', 'native', 'switch', 'with', 'continue',
-            'function', 'new', 'synchronized', 'default', 'goto', 'null', 'this'];
+        this.palabras = [
+                            "rojo", "azul", "verde", "amarillo", "naranja", 
+                            "morado", "rosa", "lavanda", "chocolate", "blanco", "negro", 
+                            "gris", "celeste", "turquesa", "violeta", "dorado", "plateado",
+                            "bronce", "cobre", "turquesa", "esmeralda", "fucsia", "ocre",
+                            "terracota", "mostaza", "magenta", "cian", "beige"
+        ];
 
         game.load.image('horca', 'assets/img/horca.png');
         game.load.image('asustado', 'assets/img/asustado.png');
@@ -245,7 +245,7 @@ var play = {
     // **********************
     elegirPalabra: function () {
 
-        var indice = Math.floor(Math.random() * 53);
+        var indice = Math.floor(Math.random() * this.palabras.length);
         this.palabra = this.palabras[indice];
         
         console.log("palabra: ", this.palabra);
