@@ -45,13 +45,13 @@ var play = {
             game.load.image(this.alias[i], 'assets/img/letras/' + this.alias[i] + '.png');
 
 
-        
+       
 
     },
 
     create: function () {
         
-               
+                
         this.crearHorca();
 
         this.crearSentenciado();
@@ -115,8 +115,6 @@ var play = {
                 letra.width = 50;
                 letra.height = 50;
 
-                // console.log(this.palabra.split(this.letter.toLowerCase()).join('-'));
-
             }
 
 
@@ -147,8 +145,16 @@ var play = {
                 this.botonera[i].visible=false;
             }
 
-            game.add.image(121, 147, 'cabeza');
-            game.add.image(350,400,'ahorcado');
+            // Cambiamos la cara a 'cabeza' (muerto)
+            this.man[0].loadTexture('cabeza');
+
+            // Hacemos que todo el grupo del monigote se balancee parejo como un péndulo
+            game.add.tween(this.manGroup).to({ rotation: 0.15 }, 800, Phaser.Easing.Sinusoidal.InOut, true, 0, -1, true);
+
+            // Mostramos la imagen de perdiste (ahorcado) y la hacemos interactiva
+            var imgPerdiste = game.add.image(350, 400, 'ahorcado');
+            imgPerdiste.inputEnabled = true;
+            imgPerdiste.events.onInputDown.add(this.irAIntro, this);
             
         }
     },
@@ -167,10 +173,20 @@ var play = {
             }
 
             game.add.image(121, 147, 'feliz');
-            game.add.image(350, 400, 'ganaste');
+            
+            var imgGanaste = game.add.image(350, 400, 'ganaste');
+            imgGanaste.inputEnabled = true;
+            imgGanaste.events.onInputDown.add(this.irAIntro, this);
 
         }
 
+    },
+
+    // *******************
+    // Volver a la intro
+    // *******************
+    irAIntro: function () {
+        game.state.start('intro'); 
     },
 
 
@@ -202,22 +218,24 @@ var play = {
 
     crearSentenciado: function () {
 
-
+        // Creamos un grupo contenedor ubicado en la posición inicial de la cabeza
+        this.manGroup = game.add.group();
+        this.manGroup.x = 121;
+        this.manGroup.y = 147;
 
         this.man = [];
 
-        this.man[0] = game.add.image(121, 147, 'asustado');
-        this.man[1] = game.add.image(138, 260, 'torso');
-        this.man[2] = game.add.image(113, 253, 'brazoIzq');
-        this.man[3] = game.add.image(193, 260, 'brazoDer');
-        this.man[4] = game.add.image(103, 395, 'piernaIzq');
-        this.man[5] = game.add.image(197, 370, 'piernaDer');
+        // Las posiciones de las partes ahora son relativas a la posición del grupo (origen en la cabeza)
+        this.man[0] = this.manGroup.create(0, 0, 'asustado');
+        this.man[1] = this.manGroup.create(17, 113, 'torso');
+        this.man[2] = this.manGroup.create(-8, 106, 'brazoIzq');
+        this.man[3] = this.manGroup.create(72, 113, 'brazoDer');
+        this.man[4] = this.manGroup.create(-18, 248, 'piernaIzq');
+        this.man[5] = this.manGroup.create(76, 223, 'piernaDer');
 
-
-
-
-        for (var i = 0; i < this.man.length; i++) this.man[i].visible = false;
-
+        for (var i = 0; i < this.man.length; i++) {
+            this.man[i].visible = false;
+        }
 
     },
 
